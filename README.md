@@ -3,38 +3,54 @@ Project title: SpeakEasy
 
 Project description: A wearable that monitors physiological stress in real time and gives the user a private buzz to pause, breathe, and recenter before anxiety takes over their presentation.
 
-Libraries used in index.html:
-HTML/CSS/JavaScript: Languages used to create our project website
-Google Fonts: Typography used for project website
+## Libraries Used
 
-Libraries used in dashboard.html:
-Arduino IDE/Serial communication: Used to program the Arduino board and stream EDA data over USB to the dashboard
+### speakeasy.ino (Arduino)
+- **Arduino Core (built-in)** — Provides pinMode, digitalWrite, analogRead, 
+  millis, and Serial. Everything the sketch runs on. No installation needed.
+- **Serial (built-in)** — Streams smoothed GSR readings to the browser over 
+  USB as GSR:<value> and listens for ALERT_ON / ALERT_OFF commands back from 
+  the dashboard to trigger the haptic motors.
 
-Setup instructions (in order): how to install dependencies, connect hardware, and run the system
+### dashboard.html (Browser)
+- **Web Serial API (browser built-in)** — Connects the browser directly to the 
+  Arduino over USB. Reads the GSR data stream and sends haptic trigger commands 
+  back. Requires Chrome or Edge — does not work in Firefox or Safari.
+- **Web Speech API (browser built-in)** — Runs live speech-to-text in the 
+  browser with no external service. Detects speaking vs. silence, identifies 
+  filler words, and tags words spoken during high-EDA moments.
+- **Chart.js (loaded via CDN)** — Renders the real-time EDA line chart in the 
+  session report and the multi-session trends chart.
+- **Google Fonts (loaded via CDN)** — Typography for the dashboard UI. 
+  Requires an internet connection to load.
+
+
+## Setup instructions: Installing dependencies ➡️ connecting hardware ➡️ running the system
 1. Download and install the Arduino IDE.
-2. Open the speakeasy.ino sketch from the repository.
-3. Clone the repository: git clone https://github.com/philly-G/320Team1_P4.git
-4. Open index.html to view the SpeakEasy website (optional)
-5. Open dashboard.html to view the SpeakEasy interface
+2. Clone the repository:
+   git clone https://github.com/philly-G/320Team1_P4.git
+3. Open the speakeasy.ino sketch from the repository in Arduino IDE.
+4. Open index.html to view the SpeakEasy website (optional).
+5. Open dashboard.html via a local server (see step 10).
 6. Attach EDA sensors to the index and middle fingers
 7. Put on the pillow, ensuring the haptic buzz motor is on your shoulders 
 8. Connect the Arduino to the EDA sensors and haptic motor following the wiring diagram in p4sketch2.png
 9. Plug the Arduino board into your computer via USB.
-10. Connect to the serial ... via Bluetooth
+10. In your terminal, navigate to the project folder and run python3 -m http.server. Then open Chrome or Edge and go to http://localhost:8000/dashboard.html. Click Connect Arduino, select your board from the popup, and live EDA data will begin streaming automatically.
 You should see live EDA and speech data streaming into the dashboard once everything is connected and you begin speaking
 
-Usage instructions: how to interact with your TUI
+## Usage instructions
 1. Once the EDA sensors and Arduino hardware are connected to your computer and dashboard.html is streaming correctly, begin the callibration period by playing the matching game. This sets a personal baseline.
 2. Begin presenting/speaking. When your EDA rises above the configured threshold or when speech analysis detects a cluster of filler words or unnatural pauses, the haptic motors at your shoulder will buzz gently.
 3. After presenting, review the session summary in the dashboard: EDA over time, words per minute, pause count, and filler word frequency.
 
-Credits: 
+## Credits: 
 Philly Stanley, Aubrey Cantrell, Finn Kingsbury
 ClaudeAI
 CoPilot
 Notion's AI Chat
 
-Annotated Bibliography: Biofeedback and Physiological Regulation
+## Annotated Bibliography: Biofeedback and Physiological Regulation
 Gallego, Sergio, et al. “Embodied Strategies for Public Speaking Anxiety: Evaluation of the Corp-Oral Program.” Frontiers in Human Neuroscience, vol. 17, Nov. 2023, https://doi.org/10.3389/fnhum.2023.1268798.
 This study evaluates a program designed to use physiological measures, including EDA and heart rate, to mitigate public speaking anxiety through "Corp-Oral" (body-voice) interventions. It provides critical empirical support for SpeakEasy’s premise that physical interventions can significantly reduce self-perceived and physiological distress during live performances.
 
