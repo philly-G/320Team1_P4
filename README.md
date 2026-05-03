@@ -45,10 +45,15 @@ You should see live EDA and speech data streaming into the dashboard once everyt
 3. After presenting, review the session summary in the dashboard: EDA over time, words per minute, pause count, and filler word frequency.
 
 ## Credits: 
-Philly Stanley, Aubrey Cantrell, Finn Kingsbury
-ClaudeAI
-CoPilot
-Notion's AI Chat
+**Team**
+- Philly Stanley
+- Aubrey Cantrell
+- Finn Kingsbury
+
+**AI Tools**
+- Claude AI
+- GitHub Copilot
+- Notion AI
 
 ## Annotated Bibliography: Biofeedback and Physiological Regulation
 Gallego, Sergio, et al. “Embodied Strategies for Public Speaking Anxiety: Evaluation of the Corp-Oral Program.” Frontiers in Human Neuroscience, vol. 17, Nov. 2023, https://doi.org/10.3389/fnhum.2023.1268798.
